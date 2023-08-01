@@ -6,9 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chexa WebApp</title>
 
-    <script src="index.js"></script>
+    <script src="index.js" defer></script>
 </head>
 <body>
-    <button onClick="ClickMe()"> Click Me! </button>
+    <div class="container">
+        <form action="https://www.google.com/search" method="get" id="search-form">
+            <input type="text" name="q">
+            <button type="button">
+                <i class="fas fa-microphone">Record command!</i>
+            </button>
+        </form>
+    </div>
 </body>
 </html>
