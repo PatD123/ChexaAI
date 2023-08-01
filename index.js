@@ -42,4 +42,5 @@ function transcriptize(event){
     console.log(command);
     searchFormInput.value = command;
     searchForm.submit();
+
 }
