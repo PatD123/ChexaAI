@@ -35,3 +35,11 @@ recognition.addEventListener("end", function endVoiceRecog() {
     searchFormInput.focus();
     console.log("Stopped recording . . .");
 })
+
+recognition.addEventListener("result", transcriptize);
+function transcriptize(event){
+    var command = event.results[0][0].transcript;
+    console.log(command);
+    searchFormInput.value = command;
+    searchForm.submit();
+}
