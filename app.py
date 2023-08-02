@@ -22,4 +22,4 @@ def index():
     
     result = request.args.get("result")
     print(result)
-    return render_template("example.html", result=result)
+    return render_template("index.html", result=result)
