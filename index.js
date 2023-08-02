@@ -1,6 +1,6 @@
 const searchForm = document.querySelector("#search-form");
 const searchFormInput = document.querySelector("input");
-const voiceRecogBtn = document.querySelector("button");
+const voiceRecogBtn = document.getElementById("VoiceRecogBtn");
 
 // Mozilla Speech recognition
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -41,6 +41,5 @@ function transcriptize(event){
     var command = event.results[0][0].transcript;
     console.log(command);
     searchFormInput.value = command;
-    searchForm.submit();
-
+    searchForm.dispatchEvent(new Event('submit'));
 }

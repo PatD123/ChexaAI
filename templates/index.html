@@ -6,17 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chexa WebApp</title>
 
-    <script src="index.js" defer></script>
+    <script src="../index.js" defer></script>
+    <script src="../commandResponse.js" defer></script>
 </head>
 <body>
     <div class="container">
-        <form action="http://127.0.0.1:5000/gpt" method="post" target="_blank" id="search-form">
-            <input type="text" type="text" name="command" placeholder="Record voice...">
-            <button type="button" id="VoiceRecogBtn">
-                <i class="fas fa-microphone">Record command!</i>
-            </button>
+        <form id="search-form">
+            <input type="text" name="command" placeholder="Record voice...">
         </form>
     </div>
-    <div id="result">Response: {{ result }}</div>
+    <button type="button" id="VoiceRecogBtn">
+        <i class="fas fa-microphone">Record command!</i>
+    </button>
+    <div id="result">Response: </div>
 </body>
 </html>

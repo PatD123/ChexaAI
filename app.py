@@ -1,14 +1,16 @@
 import os, sys
 import openai
+from flask_cors import CORS
 from flask import Flask, redirect, render_template, request, url_for
 
 app = Flask(__name__)
+CORS(app)
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 @app.route("/gpt", methods=("GET", "POST"))
 def index():
     if request.method == "POST":
-        command = request.form["command"]
+        command = request.data.decode("UTF-8")
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
              messages=[
@@ -17,9 +19,5 @@ def index():
             ],
             temperature=0.2,
         )
-        #print(response['choices'][0]['message']['content'])
-        return redirect(url_for("index", result=response['choices'][0]['message']['content']))
-    
-    result = request.args.get("result")
-    print(result)
-    return render_template("index.html", result=result)
+        # print(response['choices'][0]['message']['content'])
+        return response['choices'][0]['message']['content']
