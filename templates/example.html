@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<head>
+  <title>OpenAI Quickstart</title>
+</head>
+
+<body>
+  <h3>ChexaAI</h3>
+  <form action="http://127.0.0.1:5000/gpt" method="post">
+    <input type="text" name="command" placeholder="wha u feelin rn" required />
+    <input type="submit" value="Generate names" />
+  </form>
+  <div class="result">{{ result }}</div>
+</body>
