@@ -1,11 +1,16 @@
 import os, sys
 import openai
+import serial
 from flask_cors import CORS
 from flask import Flask, redirect, render_template, request, url_for
 
+# Flask setup
 app = Flask(__name__)
 CORS(app)
+
+# Vars setup
 openai.api_key = os.getenv("OPENAI_API_KEY")
+arduino = serial.Serial("com7", 115200)
 
 @app.route("/gpt", methods=("GET", "POST"))
 def index():
@@ -20,4 +25,22 @@ def index():
             temperature=0.2,
         )
         # print(response['choices'][0]['message']['content'])
-        return response['choices'][0]['message']['content']
+
+        # Light switch: max
+        # Music speaker: high
+        # Thermostat: medium
+
+        # Official Result
+        result = response['choices'][0]['message']['content']
+        
+        # Parsing result for LIGHT, MUSIC VOLUME, and THERMOSTAT, in that order
+        arduinoCmds = result.split('\n') # Split on new line
+        stringCmd = ""
+        for cmd in arduinoCmds:
+            c = cmd.split(": ")[1]
+            stringCmd += c + ":"
+        print(stringCmd) # Ex: zero:low:medium ==> light:music_vol:thermostat
+        arduino.write(stringCmd.encode()) # Shoot the cmd to arduino
+
+
+        return result
