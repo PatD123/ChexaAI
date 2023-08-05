@@ -13,13 +13,17 @@
 </head>
 <body>
     <div class="container">
+
         <form id="search-form">
             <input type="text" name="command" placeholder="Record voice...">
         </form>
+
+        <button type="button" id="VoiceRecogBtn">
+            <i class="fas fa-microphone">Record command!</i>
+        </button>
+
+        <div id="response-header">Response</div>
+        <div id="result"></div>
     </div>
-    <button type="button" id="VoiceRecogBtn">
-        <i class="fas fa-microphone">Record command!</i>
-    </button>
-    <div id="result">Response: </div>
 </body>
 </html>
