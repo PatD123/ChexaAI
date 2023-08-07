@@ -1,4 +1,4 @@
-int pinLED = 13;
+int pinLED = 11;
 String arr[3] = {"", "", ""};
 int arrSize = 3;
 
@@ -14,6 +14,11 @@ void loop() {
     arr[i] = Serial.readStringUntil(':');
     Serial.println(arr[i]);
   }
-  if(arr[0] == "max")digitalWrite(pinLED, HIGH);
-  else digitalWrite(pinLED, LOW);
+
+  // LED FEATURE
+  if(arr[0] == "max")analogWrite(pinLED, (255./4. * 4.));
+  else if(arr[0] == "high")analogWrite(pinLED, (255./4. * 3.));
+  else if(arr[0] == "medium")analogWrite(pinLED, (255./4. * 2.));
+  else if(arr[0] == "low")analogWrite(pinLED, (255./4. * 1.));
+  else analogWrite(pinLED, 0);
 }
