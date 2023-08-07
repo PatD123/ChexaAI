@@ -6,10 +6,19 @@ body {
     background-size: 30px 30px, 30px 30px;
 }
 
-* {
+.container {
+    position: fixed;
+    border-radius: 25px;
+    top: 50%;
+    left: 50%;
+    margin-top: -200px;
+    margin-left: -250px;
+    height: 400px;
+    width: 500px;
     text-align: center;
+    background-color: white;
 }
 
-#result {
+#result, #response-header {
     color: #fd5c63; 
 }

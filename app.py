@@ -40,6 +40,7 @@ def index():
             c = cmd.split(": ")[1]
             stringCmd += c + ":"
         print(stringCmd) # Ex: zero:low:medium ==> light:music_vol:thermostat
+        stringCmd = stringCmd.lower() # Make all cmds lower case to be parsed.
         arduino.write(stringCmd.encode()) # Shoot the cmd to arduino
 
 
